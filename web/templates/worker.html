@@ -1,0 +1,122 @@
+{% extends "template.html" %}
+{% load static %}
+
+
+{% block header %}
+    {% if username != None %}
+        <nav class="navbar navbar-expand-lg">
+            <a href="/" class="navbar-brand">
+                <img src="{% static "img/logo1.png" %}" class="d-inline-block align-top">
+            </a>
+            <a href="/" class="navbar-brand">PARK SYSTEM</a>
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#collapsingNavbar4">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsingNavbar4">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Адміністратор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/worker">Працівник</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-1">
+                    <br>
+                    <li class="nav-item active" style="color: white !important;">{{ username }}</li>
+                    <li class="nav-item active">
+                        <form action="/logout">
+                            {% csrf_token %}
+                            <input type="submit" value="Вийти" id="logout">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    {% else %}
+        <nav class="navbar navbar-expand-lg">
+            <a href="/" class="navbar-brand">
+                <img src="{% static "img/logo1.png" %}" class="d-inline-block align-top">
+            </a>
+            <a href="/" class="navbar-brand">PARK SYSTEM</a>
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#collapsingNavbar4">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsingNavbar4">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Адміністратор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/worker">Працівник</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-1">
+                    <br>
+                    <li class="nav-item active"><a href="/login" class="nav-link">Увійти</a></li>
+                    <li class="nav-item active"><a href="/registration" class="nav-link">Зареєструватися</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <article id="first">
+        <h1>Робочий стіл працівника</h1>
+    </article>
+
+    <article style="min-height: 100vh">
+        <div class="task-list">
+            <h1>Список завдань</h1>
+            {% if tasks %}
+                <table class="table table-hover task-list">
+                    <thead>
+                    <tr class="row">
+                        <th id="th" class="col-md-1" scope="col">id</th>
+                        <th id="th" class="col-md-2" scope="col">Назва</th>
+                        <th id="th" class="col-md-3" scope="col">Дата призначення</th>
+                        <th id="th" class="col-md-3" scope="col">Термін виконання</th>
+                        <th id="th" class="col-md-2" scope="col">Статус</th>
+                        <th id="th" class="col-md-1" scope="col"></th>
+                    </tr>
+                    </thead>
+                    {% for task in tasks %}
+                        <tr class="row">
+                            <th id="td" class="col-md-1">{{ task.id }}</th>
+                            <td class="col-md-2">{{ task.name }}</td>
+                            <td class="col-md-3">{{ task.dateStartAdmin }}</td>
+                            <td class="col-md-3">{{ task.dateFinishAdmin }}</td>
+                            <th class="col-md-2">{{ task.status }}</th>
+                            <th id="td" class="col-md-1">
+                                <form action="/worker" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ task.id }}" name="id">
+                                    <input type="submit" class="btn btn-outline-dark" value="Деталі">
+                                </form>
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}<h1>! Завдань немає !</h1>
+            {% endif %}
+        </div>
+    </article>
+    <script>
+        //Скрипт для зміни червоного та зеленого кольору для статусу завдання
+        document.querySelectorAll('th').forEach((s, i) => {
+            if (String(s.innerHTML) == "Не здано" && String(s.innerHTML) !== isNaN) {
+                s.style.color = 'darkred';
+            } else if (String(s.innerHTML) == "Здано" && String(s.innerHTML) !== isNaN) {
+                s.style.color = 'darkgreen';
+            }
+        })
+    </script>
+{% endblock %}

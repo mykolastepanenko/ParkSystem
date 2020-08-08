@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div id="reg-container">
+        <form action="" method="post" class="auth">
+            {% csrf_token %}
+            <h2>Вхід в систему</h2>
+            <input type="text" name="username" placeholder="Ім'я користувача">
+            <input type="password" name="password" placeholder="Пароль">
+            <input type="submit" class="btn btn-outline-light" id="auth-btn" value="Увійти">
+            <h4>Немає аккаунту? <a href="/registration">Зареєструйтеся!</a></h4>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,203 @@
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/park1.jpg");
+}
+
+nav {
+    border-bottom: solid 2px darkgreen;
+}
+
+nav img {
+    width: 35px;
+    height: 35px;
+}
+
+nav a {
+    color: white !important;
+}
+
+nav a:hover, nav a:focus {
+    color: gray !important;
+    transition-duration: 0.5s;
+}
+
+article {
+    height: auto;
+    padding: 30px;
+    background: url("../img/background.jpg");
+
+}
+
+article#first {
+    height: calc(100vh - 63px);
+    background: transparent;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: black 3px 3px 2px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+}
+
+div#reg-container {
+    max-width: 100vw;
+    height: calc(100vh - 63px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    /*text-shadow: black 3px 3px 2px;*/
+    /*font-family: 'Roboto Slab', serif;*/
+    /*font-weight: bold;*/
+    /*-webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);*/
+}
+
+.forbidden-container img {
+    width: 12.5%;
+    min-width: 200px;
+    min-height: 200px;
+    margin-bottom: 20px;
+}
+
+/*.forbidden-container h3 {*/
+
+/*}*/
+
+.forbidden-container {
+    height: calc(100vh - 5rem);
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: black 3px 3px 5px;
+    /*font-family: 'Roboto Slab', serif;*/
+    /*font-weight: bold;*/
+    /*-webkit-text-stroke: 1px rgba(0,0,0, 0.6);*/
+}
+
+#logout {
+    width: auto;
+    height: auto;
+    color: white;
+    background: none;
+    border: none;
+}
+
+#logout:hover {
+    transition-duration: 0.5s;
+    color: gray;
+}
+
+form.auth {
+    width: 450px;
+    max-width: 100%;
+    height: 525px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form.auth input {
+    width: 50%;
+    height: 40px;
+    margin: 10px 0;
+}
+
+form.auth h4 {
+    margin-top: 5rem;
+    text-align: center !important;
+}
+
+/*------*/
+
+form.task {
+
+}
+
+#auth-btn {
+    width: 50%;
+}
+
+.reg-form {
+    color: red;
+}
+
+.task-list {
+    width: 1000px;
+    max-width: 90%;
+    height: 100%;
+    /*background: rgba(0, 0, 0, 0.9);*/
+    color: white;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/*.task-list input[type="submit"] {*/
+/*    background: transparent !important;*/
+/*    border: solid 1px white !important;*/
+/*    color: white;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.task-list input[type="submit"]:hover{*/
+/*    transition-duration: 0.25s;*/
+/*    border: none;*/
+/*    color: black;*/
+/*    background: white !important;*/
+/*}*/
+
+.task-list h1 {
+    padding-bottom: 30px;
+    text-shadow: 1px 1px 5px black;
+}
+
+.task-list > h4 > a {
+    color: black;
+}
+
+.col-lg-6 input, .col-lg-12 input {
+    width: 100%;
+    height: 50px;
+}
+
+.col-lg-12 textarea {
+    width: 100%;
+    height: 200px;
+}
+
+th {
+    border: none !important;
+}
+
+#th {
+    border: none !important;
+    border-top: solid 1px black !important;
+}
+
+td, #td {
+    color: white !important;
+    border: none !important;
+}
+
+tr {
+    border: none !important;
+    border-bottom: solid 1px black !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+

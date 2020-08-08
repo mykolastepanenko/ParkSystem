@@ -1,0 +1,81 @@
+{% extends "template.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block header %}
+    {% if username != None %}
+        <nav class="navbar navbar-expand-lg">
+            <a href="/" class="navbar-brand">
+                <img src="{% static "img/logo1.png" %}" class="d-inline-block align-top">
+            </a>
+            <a href="/" class="navbar-brand">PARK SYSTEM</a>
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#collapsingNavbar4">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsingNavbar4">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Адміністратор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/worker">Працівник</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-1">
+                    <br>
+                    <li class="nav-item active" style="color: white !important;">{{ username }}</li>
+                    <li class="nav-item active">
+                        <form action="/logout">
+                            {% csrf_token %}
+                            <input type="submit" value="Вийти" id="logout">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    {% else %}
+        <nav class="navbar navbar-expand-lg">
+            <a href="/" class="navbar-brand">
+                <img src="{% static "img/logo1.png" %}" class="d-inline-block align-top">
+            </a>
+            <a href="/" class="navbar-brand">PARK SYSTEM</a>
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#collapsingNavbar4">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsingNavbar4">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Адміністратор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/worker">Працівник</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-1">
+                    <br>
+                    <li class="nav-item active"><a href="/login" class="nav-link">Увійти</a></li>
+                    <li class="nav-item active"><a href="/registration" class="nav-link">Зареєструватися</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <article id="first">
+        <h1>PARK SYSTEM</h1>
+        <h4>СИСТЕМА УПРАВЛІННЯ ГРОМАДСЬКИМ ПАРКОМ</h4>
+    </article>
+
+{% endblock %}
